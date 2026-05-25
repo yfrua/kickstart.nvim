@@ -384,6 +384,10 @@ do
     },
   }
 
+  -- Pick a window interactively when multiple are open
+  vim.pack.add { gh 's1n7ax/nvim-window-picker' }
+  require('window-picker').setup {}
+
   -- [[ Colorscheme ]]
   -- You can easily change to a different colorscheme.
   -- Change the name of the colorscheme plugin below, and then

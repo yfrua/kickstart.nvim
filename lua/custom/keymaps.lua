@@ -30,6 +30,10 @@ vim.keymap.set('n', '<leader>v', '<C-w>v', { desc = 'Split window [V]ertically' 
 vim.keymap.set('n', '<leader>h', '<C-w>s', { desc = 'Split window [H]orizontally' })
 vim.keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Make split windows equal width & height' })
 vim.keymap.set('n', '<leader>xs', ':close<CR>', { desc = 'Close current split window' })
+vim.keymap.set('n', '<leader>wp', function()
+  local window = require('window-picker').pick_window()
+  if window then vim.api.nvim_set_current_win(window) end
+end, { desc = '[W]indow [P]icker' })
 
 -- Navigate between splits
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)

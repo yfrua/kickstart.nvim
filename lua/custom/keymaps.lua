@@ -9,7 +9,7 @@ vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true })
 local opts = { noremap = true, silent = true }
 
 -- save file
-vim.keymap.set('n', '<C-w>', '<cmd> w <CR>', opts)
+vim.keymap.set('n', '<leader>w', '<cmd> w <CR>', { desc = '[W]rite changes to file' })
 
 -- quit file
 vim.keymap.set('n', '<C-q>', '<cmd> q <CR>', opts)
@@ -26,10 +26,10 @@ vim.keymap.set('n', 'n', 'nzzzv', opts)
 vim.keymap.set('n', 'N', 'Nzzzv', opts)
 
 -- Window management
-vim.keymap.set('n', '<leader>v', '<C-w>v', opts) -- split window vertically
-vim.keymap.set('n', '<leader>h', '<C-w>s', opts) -- split window horizontally
-vim.keymap.set('n', '<leader>se', '<C-w>=', opts) -- make split windows equal width & height
-vim.keymap.set('n', '<leader>xs', ':close<CR>', opts) -- close current split window
+vim.keymap.set('n', '<leader>v', '<C-w>v', { desc = 'Split window [V]ertically' })
+vim.keymap.set('n', '<leader>h', '<C-w>s', { desc = 'Split window [H]orizontally' })
+vim.keymap.set('n', '<leader>se', '<C-w>=', { desc = 'Make split windows equal width & height' })
+vim.keymap.set('n', '<leader>xs', ':close<CR>', { desc = 'Close current split window' })
 
 -- Navigate between splits
 vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)
@@ -43,3 +43,11 @@ vim.keymap.set('v', '>', '>gv', opts)
 
 -- Keep last yanked when pasting
 vim.keymap.set('v', 'p', '"_dP', opts)
+
+-- open terminal on right
+vim.keymap.set("n", "<C-t>", function()
+  vim.cmd("vsplit")
+  vim.cmd("wincmd L")
+  vim.cmd("terminal")
+  vim.cmd("vertical resize 80")
+end, { desc = "Open [T]erminal on right" })

@@ -976,7 +976,7 @@ do
 
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
-  require 'core.keymaps'
+  require 'custom.keymaps'
 end
 
 -- The line beneath this is called `modeline`. See `:help modeline`

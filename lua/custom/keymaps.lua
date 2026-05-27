@@ -36,10 +36,15 @@ vim.keymap.set('n', '<leader>wp', function()
 end, { desc = '[W]indow [P]icker' })
 
 -- Navigate between splits
-vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)
-vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
-vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
-vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
+-- vim.keymap.set('n', '<C-k>', ':wincmd k<CR>', opts)
+-- vim.keymap.set('n', '<C-j>', ':wincmd j<CR>', opts)
+-- vim.keymap.set('n', '<C-h>', ':wincmd h<CR>', opts)
+-- vim.keymap.set('n', '<C-l>', ':wincmd l<CR>', opts)
+
+vim.keymap.set('n', '<C-h>', ':TmuxNavigateLeft<CR>', opts)
+vim.keymap.set('n', '<C-j>', ':TmuxNavigateDown<CR>', opts)
+vim.keymap.set('n', '<C-k>', ':TmuxNavigateUp<CR>', opts)
+vim.keymap.set('n', '<C-l>', ':TmuxNavigateRight<CR>', opts)
 
 -- Stay in indent mode
 vim.keymap.set('v', '<', '<gv', opts)

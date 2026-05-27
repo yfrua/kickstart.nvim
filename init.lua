@@ -244,6 +244,13 @@ do
   -- [[ Basic Autocommands ]]
   --  See `:help lua-guide-autocommands`
 
+  -- Auto-reload files changed outside Neovim
+  vim.opt.autoread = true
+  vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, {
+    pattern = '*',
+    command = 'checktime',
+  })
+
   -- Highlight when yanking (copying) text
   --  Try it with `yap` in normal mode
   --  See `:help vim.hl.on_yank()`
@@ -988,6 +995,7 @@ do
 
   -- NOTE: You can add your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
   --
+  require 'custom.plugins'
   require 'custom.keymaps'
 end
 

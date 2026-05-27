@@ -793,8 +793,13 @@ do
         lua = true,
         python = true,
       }
-      if enabled_filetypes[vim.bo[bufnr].filetype] then
-        return { timeout_ms = 500 }
+      local ft = vim.bo[bufnr].filetype
+      if enabled_filetypes[ft] then
+        local timeouts = {
+          lua = 2500,
+          python = 10000,
+        }
+        return { timeout_ms = timeouts[ft] or 2500 }
       else
         return nil
       end
@@ -887,11 +892,11 @@ do
     -- Blink.cmp includes an optional, recommended rust fuzzy matcher,
     -- which automatically downloads a prebuilt binary when enabled.
     --
-    -- By default, we use the Lua implementation instead, but you may enable
-    -- the rust implementation via `'prefer_rust_with_warning'`
+    -- Prefer the rust implementation (auto-downloads prebuilt binaries) and
+    -- fall back to Lua when it isn't available.
     --
     -- See `:help blink-cmp-config-fuzzy` for more information
-    fuzzy = { implementation = 'lua' },
+    fuzzy = { implementation = 'prefer_rust' },
 
     -- Shows a signature help window while you type arguments for a function
     signature = { enabled = true },

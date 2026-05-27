@@ -159,6 +159,8 @@ do
   --   and `:help lua-guide-options`
   vim.o.list = true
   vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+  -- Avoid swapfile prompts when plugins open files non-interactively (e.g. Neo-tree).
+  vim.opt.shortmess:append 'A'
 
   -- Preview substitutions live, as you type!
   vim.o.inccommand = 'split'

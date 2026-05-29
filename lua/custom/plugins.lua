@@ -1,5 +1,6 @@
 -- Custom plugins
 vim.pack.add {
+  'https://github.com/christoomey/vim-tmux-navigator',
   'https://codeberg.org/andyg/leap.nvim',
   'https://github.com/supermaven-inc/supermaven-nvim',
   'https://github.com/NeogitOrg/neogit',
@@ -13,7 +14,7 @@ require('leap').opts.preview = function(ch0, ch1, ch2) return not (ch1:match '%s
 require('supermaven-nvim').setup {
   keymaps = {
     accept_suggestion = '<Tab>',
-    clear_suggestion = '<esc>',
+    clear_suggestion = '<C-[>',
     accept_word = '<C-j>',
   },
   -- ignore_filetypes = { cpp = true }, -- or { "cpp", }

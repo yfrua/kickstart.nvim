@@ -54,9 +54,15 @@ vim.keymap.set('v', '>', '>gv', opts)
 vim.keymap.set('v', 'p', '"_dP', opts)
 
 -- open terminal on right
-vim.keymap.set("n", "<C-t>", function()
-  vim.cmd("vsplit")
-  vim.cmd("wincmd L")
-  vim.cmd("terminal")
-  vim.cmd("vertical resize 80")
-end, { desc = "Open [T]erminal on right" })
+vim.keymap.set('n', '<C-t>', function()
+  vim.cmd 'vsplit'
+  vim.cmd 'wincmd L'
+  vim.cmd 'terminal'
+  vim.cmd 'vertical resize 80'
+end, { desc = 'Open [T]erminal on right' })
+
+-- Terminal mode escape
+vim.keymap.set('t', 'jk', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
+
+-- Insert mode escape
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Use jk in input mode as Esc' })

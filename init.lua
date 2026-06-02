@@ -706,7 +706,13 @@ do
   --  See `:help lsp-config` for information about keys and how to configure
   ---@type table<string, vim.lsp.Config>
   local servers = {
-    -- clangd = {},
+    clangd = {
+      cmd = { 'clangd', '--background-index', '--clang-tidy' },
+      root_markers = { 'compile_commands.json', 'compile_flags.txt', '.clangd', '.git' },
+      init_options = {
+        fallbackFlags = { '-std=c++20' },
+      },
+    },
     -- gopls = {},
     pyright = {},
     -- rust_analyzer = {},
